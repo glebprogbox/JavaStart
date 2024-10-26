@@ -2,11 +2,17 @@
 
 Пример простого класса. Он иммутабельный, то есть изменить объект (майнамбер) будет нельзя.
 
-public final class ImmutableClassMy { private final int myNumber;
+public final class ImmutableClassMy { 
+private final int myNumber;
 
-public ImmutableClassMy (int myNumber){ this.myNumber = myNumber; // конструктор, присваивающий аргумент к переменной класса }
+public ImmutableClassMy (int myNumber)
+{ this.myNumber = myNumber; // конструктор, присваивающий аргумент к переменной класса 
+}
 
-public int getMyNumber() { return myNumber; } }
+public int getMyNumber() { 
+return myNumber; 
+} 
+}
 
 Пример кода с этим классом
 
@@ -25,3 +31,6 @@ public class Main { public static void main(String[] args) { // Создаем �
     System.out.println("anotherNumber = " + anotherNumber);
 }
 }
+
+
+Еще пример, когда отдаем новый объект
