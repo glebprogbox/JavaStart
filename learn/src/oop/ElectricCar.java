@@ -1,0 +1,29 @@
+package oop;
+
+import immutable.ImmutableClass;
+
+public final class ElectricCar extends Car{
+    private int electricEnginePower;
+
+    protected ElectricCar(int speed, String model, int electricEnginePower) { //зачем тут protected и почему не могу поставить private?
+        super(speed, model); //использую поля суперкласса (родителя)
+        this.electricEnginePower = electricEnginePower;
+    }
+
+    @Override
+    public void beep() {
+        System.out.println("Бип! Я электромобиль!");
+    }
+
+    public ElectricCar get() {
+        return this; //почему использую this, а не могу использовать все поля? почему программа просит new?
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public ElectricCar editSpeed(int speed) {
+        return new ElectricCar (speed + speed, model, electricEnginePower);
+    }
+}
