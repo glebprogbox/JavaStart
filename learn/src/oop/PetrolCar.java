@@ -1,9 +1,9 @@
 package oop;
 
-public final class PetrolCar extends Car{
-    private int petrolEnginePower;
+public final class PetrolCar extends Car {
+    private final int petrolEnginePower;
 
-    protected PetrolCar(int speed, String model, int petrolEnginePower) {
+    public PetrolCar(int speed, String model, int petrolEnginePower) {
         super(speed, model);
         this.petrolEnginePower = petrolEnginePower;
     }
@@ -21,7 +21,7 @@ public final class PetrolCar extends Car{
         return speed;
     }
 
-    public PetrolCar editSpeed(int speed) {
-        return new PetrolCar (speed + speed, model, petrolEnginePower);
+    public void editSpeed(int speed) {
+        this.speed = speed;
     }
 }
