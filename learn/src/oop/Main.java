@@ -14,18 +14,9 @@ public class Main {
         Tesla.editSpeed(500);
 
         System.out.println("Теперь новая скорость Tesla: " + Tesla.getSpeed() + ". Объект: " + Tesla.get());
-        System.out.println("Ну да, все верно, был создан новый объект и ссылки на него нет $) Еще разок..\n");
+        System.out.println("Ну да, все верно, был изменен объект и ссылка остается на него та же.\n");
 
-        ElectricCar TeslaNewSpeed = Tesla.editSpeed(500);
-        System.out.println("Теперь новая скорость Tesla: " + TeslaNewSpeed.getSpeed() + ". Новый объект: " + TeslaNewSpeed.get());
-        System.out.println("При этом старая ссылка в порядке, старая скорость Tesla: " + Tesla.getSpeed() + ". Старый объект: " + Tesla.get() + "\n");
-
-        System.out.println("Изменим ссылку, старую на новую. Таким образом старую потеряем.");
-        Tesla = TeslaNewSpeed;
-        System.out.println("Теперь все одинаково, старая Tesla: " + Tesla.getSpeed() + ". Объект: " + Tesla.get());
-        System.out.println("...и новая Tesla: " + TeslaNewSpeed.getSpeed() + ". Объект: " + TeslaNewSpeed.get() + " ... Ссылки равны.");
-
-        TeslaNewSpeed.beep();
+        Tesla.beep();
     }
 
 }

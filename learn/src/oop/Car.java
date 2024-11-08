@@ -4,7 +4,7 @@ public abstract class Car { //делаю класс абстрактным, чт
     protected int speed;
     protected String model;
 
-    protected Car(int speed, String model) { //защищенный конструктор (почему не могу сделать приватным?)
+    public Car(int speed, String model) { //защищенный конструктор (почему не могу сделать приватным?)
         this.speed = speed;
         this.model = model;
     }

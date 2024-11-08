@@ -2,10 +2,10 @@ package oop;
 
 import immutable.ImmutableClass;
 
-public final class ElectricCar extends Car{
-    private int electricEnginePower;
+public final class ElectricCar extends Car {
+    private final int electricEnginePower;
 
-    protected ElectricCar(int speed, String model, int electricEnginePower) { //зачем тут protected и почему не могу поставить private?
+    public ElectricCar(int speed, String model, int electricEnginePower) { //зачем тут protected и почему не могу поставить private?
         super(speed, model); //использую поля суперкласса (родителя)
         this.electricEnginePower = electricEnginePower;
     }
@@ -23,7 +23,7 @@ public final class ElectricCar extends Car{
         return speed;
     }
 
-    public ElectricCar editSpeed(int speed) {
-        return new ElectricCar (speed + speed, model, electricEnginePower);
+    public void editSpeed(int speed) {
+        this.speed = speed;
     }
 }
