@@ -3,7 +3,6 @@ package students;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
@@ -28,14 +27,44 @@ public class Main {
                 readStudent();
             } else if (input.equalsIgnoreCase("search")) {
                 // todo implement search
+                if (studentCollection.isEmpty()) {
+                    System.out.println("Коллекция студентов пуста. Сначала добавьте студентов.");
+                    continue;
+                }
+                String surname = readForSearch();
+                searchFromSurname(studentCollection, surname);
+
             } else {
                 sortAndPrint();
             }
         }
     }
 
+    private static String readForSearch() {
+        System.out.println("Введите фамилию студента для поиска. Регистр не важен.");
+
+        Scanner add = new Scanner(System.in);
+        return add.nextLine();
+    }
+
+    private static void searchFromSurname(List<Student> studentCollection, String surname) {
+        int i = 0;
+        for (Student st : studentCollection) {
+            if (st.getMiddleName().equalsIgnoreCase(surname)) {
+                System.out.println(st.toString());
+                i++;
+            }
+        }
+        if(i == 0){
+            System.out.println("Студент с такой фамилией не найден.");
+        }
+    }
+
+
     private static void sortAndPrint() {
         studentCollection.sort(Comparator.comparing(Student::getDateOfBirth));
+
+        //можно использовать thenComparing и в одну строку писать и вместо :: испольузуются лямбда выражения comparing(student -> student.getDateOfBirth())
         studentCollection.sort(Comparator.comparing(Student::getName));
 
         System.out.println(studentCollection);
