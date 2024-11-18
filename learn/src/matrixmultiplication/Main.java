@@ -7,7 +7,9 @@ public class Main {
         validateFile(filePathM1);
         validateFile(filePathM2);
 
-
+        Matrix mat = new Matrix(3, 4);
+        mat.setValue(0,1,1);
+        System.out.println(mat.getMatrix());
 
     }
 
