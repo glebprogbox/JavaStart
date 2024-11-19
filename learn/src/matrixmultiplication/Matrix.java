@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Matrix {
-    private List<List<Integer>> matrix;
+    public List<List<Integer>> matrix;
 
     public Matrix(int row, int cols) { //создаем коллекцию листов интежер, пустые строчки, строчка = получается объект Лист интежер коллекции
         matrix = new ArrayList<>();
@@ -31,8 +31,8 @@ public class Matrix {
         }
     }
 
-    public ArrayList<List<Integer>> getMatrix() { //получение всей матрицы
-        return (ArrayList<List<Integer>>) matrix; //почему здесь надо было подписать что именно возвращаем Аррей лист интежер?
+    public List<List<Integer>> getMatrix() { //получение всей матрицы
+        return matrix; //почему здесь надо было подписать что именно возвращаем Аррей лист интежер?
     }
 
     public List<Integer> getMatrixRow(int index) { //получение всей строки
