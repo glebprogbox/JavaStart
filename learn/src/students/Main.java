@@ -1,5 +1,7 @@
 package students;
 
+import oop.PetrolCar;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,7 +34,15 @@ public class Main {
                     continue;
                 }
                 String surname = readForSearch();
-                searchFromSurname(studentCollection, surname);
+                List<Student> students = searchStudent(studentCollection, surname);
+                if (students.isEmpty()) {
+                    System.out.println("Студентов с такой фамилией нет!");
+                } else {
+                    System.out.println("Студенты найдены:");
+                    for(Student student : students) {
+                        System.out.println(student.toString());
+                    }
+                }
 
             } else {
                 sortAndPrint();
@@ -47,16 +57,21 @@ public class Main {
         return add.nextLine();
     }
 
-    private static void searchFromSurname(List<Student> studentCollection, String surname) {
+    private static List<Student> searchStudent(List<Student> student, String surname) {
         int i = 0;
-        for (Student st : studentCollection) {
+        List<Student> studentTempCollection = new ArrayList<>();
+        for (Student st : student) {
             if (st.getMiddleName().equalsIgnoreCase(surname)) {
-                System.out.println(st.toString());
+                studentTempCollection.add(st);
+                i++;
+            } else {
                 i++;
             }
         }
-        if(i == 0){
-            System.out.println("Студент с такой фамилией не найден.");
+        if (i == 0) {
+            return null;
+        } else {
+            return studentTempCollection;
         }
     }
 
