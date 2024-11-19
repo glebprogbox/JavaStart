@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Matrix {
-    private ArrayList<List<Integer>> matrix;
+    private List<List<Integer>> matrix;
 
     public Matrix(int row, int cols) { //создаем коллекцию листов интежер, пустые строчки, строчка = получается объект Лист интежер коллекции
-        matrix = new ArrayList<List<Integer>>();
+        matrix = new ArrayList<>();
         for (int i = 0; i < row; i++) { //считаем кол-во строк
             List<Integer> temp = new ArrayList<>(); //пустая строка
             for (int j = 0; j < cols; j++) { //идем заполнять строку
-                temp.add(0); //ставим нули
+                temp.add(0); //ставим нули, чтоб сразу были значения и ничего не падало
             }
             matrix.add(temp); //добавляем строку в коллекцию
         }
@@ -32,7 +32,7 @@ public class Matrix {
     }
 
     public ArrayList<List<Integer>> getMatrix() { //получение всей матрицы
-        return matrix;
+        return (ArrayList<List<Integer>>) matrix; //почему здесь надо было подписать что именно возвращаем Аррей лист интежер?
     }
 
     public List<Integer> getMatrixRow(int index) { //получение всей строки
@@ -46,5 +46,15 @@ public class Matrix {
     public int getCountCols() { //получение количества столбцов, учитывая, что в каждой строке одинаковое кол-во столбцов
         return matrix.get(0).size();
     }
+
+    public void printMatrix() {
+        for (List<Integer> temp : matrix) {
+            for (Integer value : temp) {
+                System.out.print(value + " ");
+            }
+            System.out.println();
+        }
+    }
+
 
 }
