@@ -92,14 +92,16 @@ public class Main {
         return resultMatrix;
     }
 
+    //какого лешего я первым аргументом не могу подать Matrix matrix ((( ошибка что тип не аррей лист интежеров??
     public static void recordMatrixToFile(List<List<Integer>> matrix, String filename) throws IOException { //пробросил исключение наверх, опять
         BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
         for (List<Integer> temp : matrix) {
             for (Integer value : temp) {
-                writer.write(value + ",");
+                writer.write(value + " ");
             }
             writer.newLine();
         }
-        System.out.println("Матрица успешно записана в файл: multi.txt");
+        writer.close();
+        System.out.println("Матрица успешно записана в файл: " + filename);
     }
 }
