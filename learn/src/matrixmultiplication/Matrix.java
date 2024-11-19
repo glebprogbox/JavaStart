@@ -1,10 +1,12 @@
 package matrixmultiplication;
 
+import students.DateUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Matrix {
-    public List<List<Integer>> matrix;
+    private List<List<Integer>> matrix;
 
     public Matrix(int row, int cols) { //создаем коллекцию листов интежер, пустые строчки, строчка = получается объект Лист интежер коллекции
         matrix = new ArrayList<>();
@@ -47,13 +49,16 @@ public class Matrix {
         return matrix.get(0).size();
     }
 
-    public void printMatrix() {
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder(); //изучить попозже стринг бьюлдер, идея сама заменила конкатенацию
         for (List<Integer> temp : matrix) {
             for (Integer value : temp) {
-                System.out.print(value + " ");
+                result.append(value).append(" ");
             }
-            System.out.println();
+            result.append("\n");
         }
+        return result.toString();
     }
 
 
