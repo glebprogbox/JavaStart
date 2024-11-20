@@ -1,7 +1,5 @@
 package students;
 
-import oop.PetrolCar;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -57,10 +55,10 @@ public class Main {
         return add.nextLine();
     }
 
-    private static List<Student> searchStudent(List<Student> student, String surname) {
+    private static List<Student> searchStudent(List<Student> students, String surname) {
         int i = 0;
         List<Student> studentTempCollection = new ArrayList<>();
-        for (Student st : student) {
+        for (Student st : students) {
             if (st.getMiddleName().equalsIgnoreCase(surname)) {
                 studentTempCollection.add(st);
                 i++;

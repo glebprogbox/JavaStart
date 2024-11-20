@@ -13,28 +13,30 @@ public class Main {
     static String filePathM1 = "learn/src/matrixmultiplication/m1.txt";
     static String filePathM2 = "learn/src/matrixmultiplication/m2.txt";
 
+    /*
+    тест для себя
+    Matrix mat = new Matrix(3, 4);
+    mat.setValue(0, 1, 1);
+    System.out.println(mat.getMatrix());
+    mat.printMatrix();
+     */
     public static void main(String[] args) throws IOException { //пробросил исключения, чтоб не писать try/catch
 
         validateFile(filePathM1);
         validateFile(filePathM2);
 
-//        тест для себя
-//        Matrix mat = new Matrix(3, 4);
-//        mat.setValue(0, 1, 1);
-//        System.out.println(mat.getMatrix());
-//        mat.printMatrix();
 
         Matrix matrixOne = createMatrix(readFile(filePathM1));
         System.out.println("Матрица 1:");
-        System.out.println(matrixOne.toString());
+        System.out.println(matrixOne);
         Matrix matrixTwo = createMatrix(readFile(filePathM2));
         System.out.println("Матрица 2:");
-        System.out.println(matrixTwo.toString());
+        System.out.println(matrixTwo);
         Matrix resultMatrix = multiplyMatrix(matrixOne, matrixTwo);
         System.out.println("Итоговая матрица:");
-        System.out.println(resultMatrix.toString());
+        System.out.println(resultMatrix);
         System.out.println("Записываю в файл..");
-        recordMatrixToFile(resultMatrix.getMatrix(), "learn/src/matrixmultiplication/multi.txt");
+        recordMatrixToFile(resultMatrix, "learn/src/matrixmultiplication/multi.txt");
     }
 
     private static void validateFile(String filePath) {
@@ -44,7 +46,7 @@ public class Main {
     }
 
     private static Matrix createMatrix(List<List<Integer>> tempMatrix) {
-        List<Integer> row = tempMatrix.get(0); //берем строку
+        List<Integer> row = tempMatrix.getFirst(); //берем строку
         int maxCols = 0;
         if (row.size() > maxCols) { // определяем максимальное количество столбцов, записываем если больше нуля
             maxCols = row.size();
@@ -90,10 +92,10 @@ public class Main {
         return resultMatrix;
     }
 
-    //какого лешего я первым аргументом не могу подать Matrix matrix ((( ошибка что тип не аррей лист интежеров??
-    public static void recordMatrixToFile(List<List<Integer>> matrix, String filename) throws IOException { //пробросил исключение наверх, опять
+    //пробросил исключение наверх, опять
+    public static void recordMatrixToFile(Matrix matrix, String filename) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
-        for (List<Integer> temp : matrix) {
+        for (List<Integer> temp : matrix.getMatrix()) {
             for (Integer value : temp) {
                 writer.write(value + " ");
             }
