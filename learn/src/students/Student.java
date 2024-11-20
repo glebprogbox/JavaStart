@@ -21,6 +21,10 @@ public class Student {
         return name;
     }
 
+    public String getMiddleName() {
+        return middleName;
+    }
+
     public Date getDateOfBirth() {
         return dateOfBirth;
     }
