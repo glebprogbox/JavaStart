@@ -30,7 +30,7 @@ public class Main {
     }
 
     public static void printMajorityElement(TreeMap<String, Integer> hashSet) {
-        int majorityElement = hash
+        int majorityElement = hash;
     }
 
 }
