@@ -59,16 +59,16 @@ public class Main {
         return hashMap;
     }
 
-    public static void printMapTwo(HashMap<Integer, Integer> hashSet) {
+    public static void printMapTwo(HashMap<Integer, Integer> hashMap) {
         System.out.println("Значения массива с счетчиками из хэшмэп..");
-        for (Map.Entry<Integer, Integer> entry : hashSet.entrySet()) {
+        for (Map.Entry<Integer, Integer> entry : hashMap.entrySet()) {
             System.out.println("Ключ: " + entry.getKey() + ". Значение: " + entry.getValue());
         }
     }
 
     //решение с простой сложностью, O(n)
-    public static void printMajorityElementTwo(HashMap<Integer, Integer> hashSet, int[] array) {
-        for (Map.Entry<Integer, Integer> entry : hashSet.entrySet()) {
+    public static void printMajorityElementTwo(HashMap<Integer, Integer> hashMap, int[] array) {
+        for (Map.Entry<Integer, Integer> entry : hashMap.entrySet()) {
             if (entry.getValue() > array.length / 2) {
                 System.out.println("Значение " + entry.getKey() + " в массиве повторяется более чем " + entry.getValue() + " раз. Длима массива " + array.length + ".");
             }
