@@ -21,7 +21,7 @@ public class Product {
         if (name == null) {
             throw new IllegalArgumentException("Имя не может быть пустым!");
         }
-        this.name = name.toUpperCase();
+        this.name = name;
     }
 
     public double getPrice() {
@@ -43,15 +43,16 @@ public class Product {
         if (category == null) {
             throw new IllegalArgumentException("Категория не может быть пустой!");
         }
-        this.category = category.toUpperCase();
+        this.category = category;
     }
 
     @Override
     public int hashCode() {
-        String id = name + category;
+        String id = name.toUpperCase() + category.toUpperCase();
         return id.hashCode(); //id будет хэшем комбинации имя+категория
     }
 
+    //в целом, я сделал такой хэш, что сравнивать еще один раз с equals вроде не надо, коллизий возникнуть не должно))
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -62,8 +63,13 @@ public class Product {
         }
 
         Product product = (Product) obj; //приведение типа объекта к Product, можно и сразу в ифах писать
-        //вместо ифов пишу сразу что все должно быть тру или вернется фолс
-        return (this.getPrice() == product.getPrice()) && (this.getCategory().equals(product.getCategory())) && (this.getName().equals(product.getName()));
+        //вместо ифов пишу сразу что все должно быть тру или вернется фолс, все, кроме цены
+        return (this.getCategory().equals(product.getCategory())) && (this.getName().equals(product.getName()));
+    }
+
+    @Override
+    public String toString() {
+        return "[Имя=" + name + ", Цена=" + price + ", Категория=" + category + "]";
     }
 
 }
