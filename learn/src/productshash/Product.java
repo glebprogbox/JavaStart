@@ -64,7 +64,7 @@ public class Product {
 
         Product product = (Product) obj; //приведение типа объекта к Product, можно и сразу в ифах писать
         //вместо ифов пишу сразу что все должно быть тру или вернется фолс, все, кроме цены
-        return (this.getCategory().equals(product.getCategory())) && (this.getName().equals(product.getName()));
+        return (this.getCategory().equalsIgnoreCase(product.getCategory())) && (this.getName().equalsIgnoreCase(product.getName()));
     }
 
     @Override
