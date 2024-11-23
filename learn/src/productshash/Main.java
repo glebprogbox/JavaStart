@@ -136,7 +136,7 @@ public class Main {
         if (products.get(id) == null) {
             System.out.println("Продукт не найден!");
         } else for (Product product : products.values()) {
-            if (product.getName().equals(name) && product.getCategory().equals(category)) {
+            if (product.getName().equalsIgnoreCase(name) && product.getCategory().equalsIgnoreCase(category)) {
                 System.out.println(product.toString());
             }
         }
