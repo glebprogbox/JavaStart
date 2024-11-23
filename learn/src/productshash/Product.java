@@ -67,6 +67,7 @@ public class Product {
         return (this.getCategory().equalsIgnoreCase(product.getCategory())) && (this.getName().equalsIgnoreCase(product.getName()));
     }
 
+
     @Override
     public String toString() {
         return "[Имя=" + name + ", Цена=" + price + ", Категория=" + category + "]";
