@@ -1,4 +1,4 @@
-package hashOne;
+package hash.hashOne;
 
 import java.util.*;
 
@@ -18,9 +18,7 @@ public class Main {
 
     public static HashSet<Integer> createHashOne(int[] array) { //возьмем уникальные значения из массива
         HashSet<Integer> hashSet = new HashSet<>();
-        int i = 0;
         for (int num : array) {
-            i++;
             hashSet.add(num);
         }
         return hashSet;
@@ -43,7 +41,7 @@ public class Main {
                 }
             }
             if (count > array.length / 2) {
-                System.out.println("Значение " + num + " в массиве повторяется более чем " + count +
+                System.out.println("Значение " + num + " в массиве повторяется " + count +
                         " раз. Длима массива " + array.length + ".");
             }
         }
@@ -70,7 +68,8 @@ public class Main {
     public static void printMajorityElementTwo(HashMap<Integer, Integer> hashMap, int[] array) {
         for (Map.Entry<Integer, Integer> entry : hashMap.entrySet()) {
             if (entry.getValue() > array.length / 2) {
-                System.out.println("Значение " + entry.getKey() + " в массиве повторяется более чем " + entry.getValue() + " раз. Длима массива " + array.length + ".");
+                System.out.println("Значение " + entry.getKey() + " в массиве повторяется " + entry.getValue() +
+                        " раз. Длима массива " + array.length + ".");
             }
         }
     }

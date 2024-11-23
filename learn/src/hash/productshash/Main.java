@@ -1,9 +1,17 @@
-package productshash;
+package hash.productshash;
 
 
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.StringTokenizer;
+
+/*
++ еще одна таска:
+есть сущность товар с атрибутами: название, категория, стоимость
+пользователь вручную добавляет товары
+товары могут быть с одинаковыми названиями, но связка «название + категория» уникальна
+нужно уметь по названию + категории мгновенно выдать стоимость товара
+ */
 
 public class Main {
     static HashMap<String, Product> products = new HashMap<>();
@@ -53,7 +61,7 @@ public class Main {
                         price,
                         category);
                 if (addProductToProducts(products, product) == null) {
-                    System.out.println("Продукт с такой категорией и ценой уже существует!");
+                    System.out.println("Продукт с такой категорией и именем уже существует!");
                 } else {
                     System.out.println("Продукт успешно добавлен в список!");
                 }
@@ -92,15 +100,15 @@ public class Main {
         }
     }
 
-    //  для примера, так бы мы удаляли продукт
-    public static void deleteProductFromProducts(HashMap<String, Product> products, Product product) {
-        String id = product.getName().toUpperCase() + product.getCategory().toUpperCase();
-        if (products.get(id) == null) {
-            System.out.println("Продукт не найден!");
-        }
-        products.remove(id);
-        System.out.println("Продукт успешно удален!");
-    }
+//    //  для примера, так бы мы удаляли продукт
+//    public static void deleteProductFromProducts(HashMap<String, Product> products, Product product) {
+//        String id = product.getName().toUpperCase() + product.getCategory().toUpperCase();
+//        if (products.get(id) == null) {
+//            System.out.println("Продукт не найден!");
+//        }
+//        products.remove(id);
+//        System.out.println("Продукт успешно удален!");
+//    }
 
     public static void getAllProducts(HashMap<String, Product> products) {
         if (products.isEmpty()) {
@@ -133,12 +141,11 @@ public class Main {
         String name = addToken.nextToken();
         String category = addToken.nextToken();
         String id = name.toUpperCase() + category.toUpperCase();
-        if (products.get(id) == null) {
+        Product product = products.get(id);
+        if (product == null) {
             System.out.println("Продукт не найден!");
-        } else for (Product product : products.values()) {
-            if (product.getName().equalsIgnoreCase(name) && product.getCategory().equalsIgnoreCase(category)) {
-                System.out.println(product.toString());
-            }
+        } else {
+            System.out.println(product);
         }
     }
 }

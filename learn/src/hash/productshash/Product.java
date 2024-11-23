@@ -1,4 +1,4 @@
-package productshash;
+package hash.productshash;
 
 
 public class Product {
