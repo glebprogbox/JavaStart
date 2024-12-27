@@ -20,41 +20,18 @@ public class Main {
     public static List<Keys<String, Integer>> listOfKeys = new ArrayList<>();
 
     public static void main(String[] args) {
-        Keys<String, Integer> keyOne = new Keys<>("key1", 500);
-        listOfKeys.add(keyOne);
-        Keys<String, Integer> keyTwo = new Keys<>("key2", 800);
-        listOfKeys.add(keyTwo);
-        Keys<String, Integer> keyThree = new Keys<>("key3", 1000);
-        listOfKeys.add(keyThree);
+        Keys<String, Integer> keys = new Keys<>();
+        keys.put("a", 1);
+        keys.put("b", 2);
 
+        String s = keys.getKeyByValue(1);
+        assert s.equals("a"); //программа проверяет, что s точно содержит a и вылетит, если это не так
+        System.out.println(s);
 
-        System.out.println("Укажите ключ key");
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        System.out.println("Значение для этого ключа = " + getValueByKey(input));
-        System.out.println("Укажите значение value");
-        Scanner scanner2 = new Scanner(System.in);
-        Integer integer = scanner2.nextInt();
-        System.out.println("Ключ для этого значения = " + getKeyByValue(integer));
+        Integer i = keys.getValueByKey("a");
+        assert i == 1;
+        System.out.println(i);
 
-    }
-
-    public static Integer getValueByKey(String key) {
-        for (Keys<String, Integer> keys : listOfKeys) {
-            if (keys.getKey().equals(key)) {
-                return keys.getValueByKey(key);
-            }
-        }
-        return null;
-    }
-
-    public static String getKeyByValue(Integer value) {
-        for (Keys<String, Integer> keys : listOfKeys) {
-            if (keys.getValue().equals(value)) {
-                return keys.getKeyByValue(value);
-            }
-        }
-        return null;
     }
 }
 

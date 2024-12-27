@@ -16,17 +16,17 @@ import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 
 public class Main {
+    static Predicate<Integer> isParity = n -> n % 2 == 0;
+    static UnaryOperator<Integer> kv = n -> n * n;
+    static UnaryOperator<Integer> x2 = n -> n * 2;
 
     public static void main(String[] args) {
         System.out.println("Введите число");
         Scanner sc = new Scanner(System.in);
         int x = sc.nextInt();
-        Predicate<Integer> isParity = n -> n % 2 == 0;
-        UnaryOperator<Integer> kv = n -> n * n;
-        UnaryOperator<Integer> x2 = n -> n * 2;
 
         System.out.println("Четное число?.." + isParity.test(x));
-        validateAndApply(isParity,kv, x2, x);
+        validateAndApply(isParity, kv, x2, x);
     }
 
     public static void validateAndApply(Predicate<Integer> isParity, UnaryOperator<Integer> kv, UnaryOperator<Integer> x2, int x) {

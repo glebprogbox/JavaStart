@@ -13,7 +13,8 @@ public class Main {
     interface OperationX {
         double apply(double a, double b, double c);
     }
-    static OperationX func = (a, b, c) -> (b*b - 4 * a * c);
+
+    static OperationX func = (a, b, c) -> (b * b - 4 * a * c);
 
     public static void main(String[] args) {
         System.out.println("Введите число 1");

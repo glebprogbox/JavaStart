@@ -1,28 +1,23 @@
 package core.generic;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Keys<K, V> {
-    private final K key;
-    private final V value;
+    private final Map<K, V> mapKey = new HashMap<>();
+    private final Map<V, K> mapValue = new HashMap<>();
 
-    public Keys(K key, V value) {
-        this.key = key;
-        this.value = value;
-    }
-
-    public V getValue() {
-        return value;
-    }
-
-    public K getKey() {
-        return key;
+    public void put(K key, V value) {
+        mapKey.put(key, value);
+        mapValue.put(value, key);
     }
 
     public V getValueByKey(K key) {
-        return value;
+        return mapKey.get(key);
     }
 
     public K getKeyByValue(V value) {
-        return key;
+        return mapValue.get(value);
     }
 
 }
