@@ -13,22 +13,21 @@ package core.generic;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 
 public class Main {
-    public static List<Keys<String, Integer>> listOfKeys = new ArrayList<>();
+    public static List<MyMaps<String, Integer>> listOfKeys = new ArrayList<>();
 
     public static void main(String[] args) {
-        Keys<String, Integer> keys = new Keys<>();
-        keys.put("a", 1);
-        keys.put("b", 2);
+        MyMaps<String, Integer> myMaps = new MyMaps<>();
+        myMaps.put("a", 1);
+        myMaps.put("b", 2);
 
-        String s = keys.getKeyByValue(1);
+        String s = myMaps.getKeyByValue(1);
         assert s.equals("a"); //программа проверяет, что s точно содержит a и вылетит, если это не так
         System.out.println(s);
 
-        Integer i = keys.getValueByKey("a");
+        Integer i = myMaps.getValueByKey("a");
         assert i == 1;
         System.out.println(i);
 

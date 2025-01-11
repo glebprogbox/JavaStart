@@ -3,7 +3,7 @@ package core.generic;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Keys<K, V> {
+public class MyMaps<K, V> {
     private final Map<K, V> mapKey = new HashMap<>();
     private final Map<V, K> mapValue = new HashMap<>();
 
