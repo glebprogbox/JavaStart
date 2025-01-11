@@ -40,20 +40,25 @@ public class Main {
                 StringTokenizer addToken = new StringTokenizer(line, ", ");
                 validateLine(addToken, lineCount);
                 String name = addToken.nextToken();
-                try {
-                    int price = Integer.parseInt(addToken.nextToken());
-                    String category = addToken.nextToken();
-                    Product product = new Product(name, price, category);
-                    addProductInMap(product);
-                    lineCount++;
-                } catch (NumberFormatException e) {
-                    System.out.println("Ошибка преобразования цены!");
-                }
+                int price = getPrice(addToken);
+                String category = addToken.nextToken();
+                Product product = new Product(name, price, category);
+                addProductInMap(product);
+                lineCount++;
             }
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден!");
         } catch (IOException e) {
             System.out.println("Ошибка чтения файла!");
+        }
+    }
+
+    private static int getPrice(StringTokenizer addToken) {
+        try {
+            return Integer.parseInt(addToken.nextToken());
+        } catch (NumberFormatException e) {
+            System.out.println("Ошибка преобразования цены! Программа будет завершена.");
+            return 0;
         }
     }
 
