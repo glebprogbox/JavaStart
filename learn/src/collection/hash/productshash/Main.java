@@ -2,12 +2,11 @@ package collection.hash.productshash;
 
 
 import java.util.HashMap;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
 /*
-+ еще одна  таска:
++ еще одна таска:
 есть сущность товар с атрибутами: название, категория, стоимость
 пользователь вручную добавляет товары
 товары могут быть с одинаковыми названиями, но связка «название + категория» уникальна
@@ -53,29 +52,26 @@ public class Main {
 
     public static void addProduct(StringTokenizer addToken) {
         String name = addToken.nextToken();
-        String priceString = addToken.nextToken();
-        int price = getPrice(priceString);
-        String category = addToken.nextToken();
-        Product product = new Product(
-                name,
-                price,
-                category);
-        if (addProductToProducts(products, product) == null) {
-            System.out.println("Продукт с такой категорией и именем уже существует!");
-        } else {
-            System.out.println("Продукт успешно добавлен в список!");
-        }
-    }
-
-    private static int getPrice(String priceString) {
         try {
-            return Integer.parseInt(priceString);
+            int price = Integer.parseInt(addToken.nextToken());
+            try {
+                String category = addToken.nextToken();
+                Product product = new Product(
+                        name,
+                        price,
+                        category);
+                if (addProductToProducts(products, product) == null) {
+                    System.out.println("Продукт с такой категорией и именем уже существует!");
+                } else {
+                    System.out.println("Продукт успешно добавлен в список!");
+                }
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
         } catch (NumberFormatException e) {
-            System.out.println("Ошибка преобразования цены! Цена будет установлена 0.");
-            return 0;
+            System.out.println("Ошибка преобразования цены!");
         }
     }
-
 
     public static HashMap<String, Product> addProductToProducts(HashMap<String, Product> products, Product product) {
         if (validateProductInHashMap(products, product) == null) {
@@ -94,21 +90,15 @@ public class Main {
             return null;
         } else {
             System.out.println("Продукт с таким хэшем найден и будет проверен на соответствие!");
-            return comparsionProductInHashMap(products, product);
+            if (!products.get(id).equals(product)) {
+                System.out.println("Продукт с таким же хэшем, но не равен переданному продукту!");
+                return null;
+            } else {
+                System.out.println("Продукт с таким же хэшем, и равен переданному продукту!");
+                return products;
+            }
         }
     }
-
-    public static HashMap<String, Product> comparsionProductInHashMap(HashMap<String, Product> products, Product product) {
-        String id = product.getName().toUpperCase() + product.getCategory().toUpperCase();
-        if (!products.get(id).equals(product)) {
-            System.out.println("Продукт с таким же хэшем, но не равен переданному продукту!");
-            return null;
-        } else {
-            System.out.println("Продукт с таким же хэшем, и равен переданному продукту!");
-            return products;
-        }
-    }
-
 
 //    //  для примера, так бы мы удаляли продукт
 //    public static void deleteProductFromProducts(HashMap<String, Product> products, Product product) {
@@ -140,7 +130,7 @@ public class Main {
     public static void searchProductAndValidate(String input) {
         StringTokenizer addToken = new StringTokenizer(input, ", ");
         int tokenCount = addToken.countTokens();
-        if (tokenCount != 2) {
+        if (!(tokenCount == 2)) {
             System.out.println("Введено недопустимое кол-во параметров! Должно быть 2.");
         } else {
             searchProduct(addToken);

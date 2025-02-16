@@ -29,8 +29,8 @@ public class Product {
     }
 
     public void setPrice(int price) {
-        if (price < 0) {
-            throw new IllegalArgumentException("Цена не может быть меньше 0!");
+        if (price < 0 || price == 0) {
+            throw new IllegalArgumentException("Цена не может быть 0 или меньше 0!");
         }
         this.price = price;
     }

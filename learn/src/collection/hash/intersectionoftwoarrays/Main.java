@@ -3,12 +3,11 @@ package collection.hash.intersectionoftwoarrays;
 import java.util.*;
 
 public class Main {
-
-    static int[] nums1 = {1, 2, 2, 1};
-    static int[] nums2 = {2, 2};
+    static int[] nums1 = {1,2,2,1};
+    static int[] nums2 = {2,2};
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(intersect(nums1, nums2)));
+    System.out.println(Arrays.toString(intersect(nums1, nums2)));
     }
 
     public static int[] intersect(int[] a, int[] b) {
