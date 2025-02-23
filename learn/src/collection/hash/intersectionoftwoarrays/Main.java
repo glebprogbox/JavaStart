@@ -3,7 +3,6 @@ package collection.hash.intersectionoftwoarrays;
 import java.util.*;
 
 public class Main {
-
     static int[] nums1 = {1,2,2,1};
     static int[] nums2 = {2,2};
 
